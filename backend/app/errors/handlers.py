@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse
 
 logger = logging.getLogger(__name__)
 
-from app.schemas import APIResponse, ErrorDetail
+from app.schemes import APIResponse, ErrorDetail
 
 
 async def pydantic_validation_exception_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
