@@ -1,33 +1,12 @@
 import {Button} from "@/react/components/ui/button";
+import {Header} from "@/react/components/ui/header";
+import {Footer} from "@/react/components/ui/footer";
 
 export default function Home() {
   return (
       <div className="flex min-h-screen flex-col bg-zinc-50 font-sans dark:bg-black">
         {/* Хедер */}
-        <header className="sticky top-0 z-10 border-b border-zinc-200 bg-background-main backdrop-blur-sm dark:border-zinc-800 dark:bg-black/80">
-          <div className="grid grid-cols-3 items-center justify-between px-50 py-4">
-            <div className="text-xl font-bold text-black dark:text-white">КодМентор</div>
-            <nav className="hidden gap-6 sm:flex justify-center">
-              <Button variant="ghost" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer" >
-                Каталог задач
-              </Button>
-              <Button variant="ghost" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer" >
-                Топ решений
-              </Button>
-              <Button variant="ghost" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer" >
-                Направления
-              </Button>
-            </nav>
-            <div className="flex items-center justify-end gap-3">
-              <Button variant="outline" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer">
-              Войти
-              </Button>
-              <Button className="hover:cursor-pointer">
-              Регистрация
-              </Button>
-            </div>
-          </div>
-        </header>
+        <Header/>
 
         {/* Основной контент */}
         <main className="flex-1">
@@ -243,43 +222,7 @@ export default function Home() {
         </main>
 
         {/* Футер */}
-        <footer className="border-t border-zinc-200 bg-black dark:border-zinc-800 dark:bg-black">
-          <div className="mx-auto max-w-7xl px-9 py-5 sm:px-6 lg:px-8">
-            <div className="flex flex-row items-center justify-between gap-4 text-sm text-zinc-500 dark:text-zinc-400 sm:flex-row">
-              <div className="flex-col">
-                <h1>КодМентор</h1>
-                <h1>Там, где идеи находят людей</h1>
-              </div>
-              <div className="flex flex-col items-start">
-                <h1 className="text-white gap-2 m-3">Ссылки</h1>
-
-                  <Button variant="link" className="hover:cursor-pointer text-white">
-                    Главная
-                  </Button>
-                  <Button variant="link" className="hover:cursor-pointer text-white">
-                    Каталог задач
-                  </Button>
-                  <Button variant="link" className="hover:cursor-pointer text-white">
-                    Топ решений
-                  </Button>
-                  <Button variant="link" className="hover:cursor-pointer text-white">
-                    Как получить портфолио
-                  </Button>
-              </div>
-              <div className="flex flex-col">
-                <h1 className="pb-2 text-white">Контакты</h1>
-                <div className="flex gap-1.5 flex-row ">
-                  <p >Телефон:</p>
-                  <p className="text-white">+7 (999) 999-99-99</p>
-                </div>
-                <div className="flex gap-1.5 flex-row">
-                  <p>Email:</p>
-                  <p className="text-white">support@kodmentor.ru</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
   );
 }
