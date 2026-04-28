@@ -47,6 +47,7 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   --color-primary-purple: var(--primary-purple);
+  --color-background-main: var(--background-main);
 }
 
 :root {
@@ -83,6 +84,7 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --primary-purple: #260686;
+  --background-main: #FBFAFD;
 }
 
 .dark {
