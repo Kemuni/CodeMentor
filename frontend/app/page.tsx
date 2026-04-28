@@ -14,7 +14,7 @@ export default function Home() {
             <div className="flex flex-row justify-between px-8 text-center w-full">
               <div className="flex flex-col gap-3 text-primary-purple">
                 <h1 className="text-5xl font-bold tracking-tight dark:text-white">
-                  Там, где <span className="text-white align-middle px-4 pb-2 rounded-full bg-blue-900">идеи</span>
+                  Там, где <span className="text-white align-middle px-4 pb-2 rounded-full bg-primary-purple">идеи</span>
                 </h1>
                 <h1 className="text-5xl font-bold tracking-tight dark:text-white">
                   находят людей
