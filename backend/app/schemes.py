@@ -19,10 +19,10 @@ class APIResponse(BaseModel, Generic[T]):
     error: Optional[ErrorDetail] = None
 
 
-class ChallengeCreation(BaseModel):
+class ChallengeBody(BaseModel):
     name: str = Field(max_length=100)
     is_free: bool
     type: ChallengeType
     difficulty: int = Field(gt=0, le=10)
-    discription: str
+    description: str
     image_url: str

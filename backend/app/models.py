@@ -27,10 +27,10 @@ class Challenge(SQLModel, table=True):
     is_free: bool
     type: str
     difficulty: int = Field(gt=0, le=10)
-    discription: str
+    description: str
     image_url: str
     created_at: datetime = Field(default=datetime.utcnow(), nullable=False)
-    last_edited: datetime = Field(default_factory=datetime.utcnow, nullable=False)
+    last_edited: datetime = Field(default_factory=datetime.utcnow, nullable=False, sa_column_kwargs={'onupdate': datetime.utcnow})
 
     tags: list["Tag"] = Relationship(back_populates="challenges", link_model=ChallengeTagsLink)
 
