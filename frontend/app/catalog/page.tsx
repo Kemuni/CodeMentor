@@ -1,7 +1,6 @@
 import {Header} from "@/react/components/ui/header";
 import {Footer} from "@/react/components/ui/footer";
-import {ChallengeCard} from "@/react/components/ui/challenge-card";
-import {Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle} from "@/react/components/ui/card";
+import {Card, CardDescription, CardFooter, CardHeader, CardTitle} from "@/react/components/ui/card";
 import {Button} from "@/react/components/ui/button";
 import {
     InputGroup,
@@ -15,7 +14,7 @@ import {Badge} from "@/react/components/ui/badge";
 export default function CatalogPage() {
     return (
         <div className="flex min-h-screen flex-col bg-red-50 font-sans dark:bg-black">
-            <Header className="bg-background-main"/>
+            <Header/>
             <main className="flex-1">
                 <div className="flex flex-col justify-center px-40 bg-background-main pt-12 pb-8 dark:bg-black gap-5">
                     <h1 className="text-5xl font-bold tracking-tight dark:text-white text-primary-purple">
