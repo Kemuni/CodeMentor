@@ -21,7 +21,11 @@
     ```shell
     uv sync
     ```
-4. Запуск проекта
+4. Применяем миграции(первый запуск)
+    ```shell
+    alembic upgrade head
+    ```
+5. Запуск проекта
     ```shell
     uv run -m app.main
     ```
