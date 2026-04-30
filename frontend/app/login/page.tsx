@@ -10,7 +10,7 @@ import {
 } from "@/react/components/ui/card"
 import { Input } from "@/react/components/ui/input"
 import { Label } from "@/react/components/ui/label"
-export default function Auth(){
+export default function Login(){
     return (
         <div className="flex min-h-screen flex-col  font-sans dark:bg-black">
             <Header/>
@@ -25,7 +25,7 @@ export default function Auth(){
                                 <form>
                                     <div className="flex flex-col gap-6">
                                         <div className="grid gap-2">
-                                            <Label htmlFor="email">Введите почту</Label>
+                                            <Label htmlFor="email">Введите почту:</Label>
                                             <Input
                                                 id="email"
                                                 type="email"
@@ -35,7 +35,7 @@ export default function Auth(){
                                         </div>
                                         <div className="flex flex-col gap-2">
                                             <div className="flex items-center">
-                                                <Label htmlFor="password">Введите пароль</Label>
+                                                <Label htmlFor="password">Введите пароль:</Label>
                                             </div>
                                             <Input id="password" type="password" placeholder="**********" required />
                                             <span
