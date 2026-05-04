@@ -83,7 +83,7 @@ export default function CatalogPage() {
                             <Badge variant="secondary" className="absolute z-40 left-4 top-4 bg-[#A3E635] text-[#3F6212] px-3 py-3">Бесплатно</Badge>
                             <Badge variant="secondary" className="absolute z-40 right-4 top-4 bg-[#FFEDD5] text-[#EA580C] px-3 py-3">Fullstack</Badge>
                             <img
-                                src="https://s0.rbk.ru/v6_top_pics/media/img/4/68/755484244831684.jpg"
+                                src="https://poleznyblog.ru/sites/default/files/poleznyblog-recepty-s-foto.jpg"
                                 alt="Event cover"
                                 className="relative z-20 aspect-video w-full object-cover"
                             />
@@ -102,7 +102,7 @@ export default function CatalogPage() {
                                 </CardDescription>
                             </CardHeader>
                             <CardFooter className="flex flex-row justify-between w-full mt-auto">
-                                <div className="flex flex-row  items-end">
+                                <div className="flex flex-row items-end">
                                     <h1 className="text-primary-purple text-3xl text-bold">
                                         3
                                     </h1>

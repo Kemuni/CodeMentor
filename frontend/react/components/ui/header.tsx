@@ -6,22 +6,32 @@ export function Header(){
             <div className="grid grid-cols-3 items-center justify-between px-50 py-4">
                 <div className="text-xl font-bold text-black dark:text-white">КодМентор</div>
                 <nav className="hidden gap-6 sm:flex justify-center">
-                    <Button variant="ghost" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer" >
-                        Каталог задач
+                    <Button variant="ghost" asChild>
+                        <a href="/catalog" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer">
+                            Каталог задач
+                        </a>
                     </Button>
-                    <Button variant="ghost" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer" >
-                        Топ решений
+                    <Button variant="ghost" asChild>
+                        <a href="/catalog" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer">
+                            Топ решений
+                        </a>
                     </Button>
-                    <Button variant="ghost" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer" >
-                        Направления
+                    <Button variant="ghost" asChild>
+                        <a href="/catalog" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer">
+                            Направления
+                        </a>
                     </Button>
                 </nav>
                 <div className="flex items-center justify-end gap-3">
-                    <Button variant="outline" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer">
-                        Войти
+                    <Button variant="outline" asChild>
+                        <a href="/login" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer">
+                            Войти
+                        </a>
                     </Button>
-                    <Button className="hover:cursor-pointer">
-                        Регистрация
+                    <Button>
+                        <a href="/register" className="hover:cursor-pointer">
+                            Регистрация
+                        </a>
                     </Button>
                 </div>
             </div>

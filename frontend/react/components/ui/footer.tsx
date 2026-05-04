@@ -12,17 +12,25 @@ export function Footer(){
                     <div className="flex flex-col items-start">
                         <h1 className="text-white gap-2 m-3">Ссылки</h1>
 
-                        <Button variant="link" className="hover:cursor-pointer text-white">
-                            Главная
+                        <Button variant="link" asChild>
+                            <a href="/" className="hover:cursor-pointer text-white">
+                                Главная
+                            </a>
                         </Button>
-                        <Button variant="link" className="hover:cursor-pointer text-white">
-                            Каталог задач
+                        <Button variant="link" asChild>
+                            <a href="/catalog" className="hover:cursor-pointer text-white">
+                                Каталог задач
+                            </a>
                         </Button>
-                        <Button variant="link" className="hover:cursor-pointer text-white">
-                            Топ решений
+                        <Button variant="link" asChild>
+                            <a href="/" className="hover:cursor-pointer text-white">
+                                Топ решений
+                            </a>
                         </Button>
-                        <Button variant="link" className="hover:cursor-pointer text-white">
-                            Как получить портфолио
+                        <Button variant="link" asChild>
+                            <a href="/" className="hover:cursor-pointer text-white">
+                                Как получить портфолио
+                            </a>
                         </Button>
                     </div>
                     <div className="flex flex-col">
