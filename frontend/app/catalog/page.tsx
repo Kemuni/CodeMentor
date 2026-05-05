@@ -44,7 +44,7 @@ export default function CatalogPage() {
 
                         </div>
                     </div>
-                    <div className="grid grid-cols-3 w-full justify-between gap-5">
+                    <div className="grid grid-cols-4 w-fit justify-between gap-5">
                         <Card className="relative mx-auto w-full max-w-sm pt-0">
                             <Badge variant="secondary" className="absolute z-40 left-4 top-4 bg-[#A3E635] text-[#3F6212] px-3 py-3">Бесплатно</Badge>
                             <Badge variant="secondary" className="absolute z-40 right-4 top-4 bg-[#CCFBF1] text-[#0F766E] px-3 py-3">Frontend</Badge>

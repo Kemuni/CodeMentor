@@ -1,10 +1,15 @@
+'use client';
+
 import { Header } from "@/react/components/ui/header";
 import { Footer } from "@/react/components/ui/footer";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/react/components/ui/card";
 import { Avatar, AvatarImage } from "@/react/components/ui/avatar";
 import { Button } from "@/react/components/ui/button";
+import { Field, FieldLabel } from "@/react/components/ui/field"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/react/components/ui/tabs";
 import {Contact, LogOut, SquarePen} from "lucide-react";
+import {PasswordInput} from "@/react/components/ui/password-input";
+
 
 export default function ProfileMain() {
     return (
@@ -121,18 +126,56 @@ export default function ProfileMain() {
                                     </div>
                                 </TabsContent>
                                 <TabsContent value="security">
-                                    <Card>
-                                        <CardHeader>
-                                            <CardTitle>Analytics</CardTitle>
-                                            <CardDescription>
-                                                Track performance and user engagement metrics. Monitor trends and
-                                                identify growth opportunities.
-                                            </CardDescription>
-                                        </CardHeader>
-                                        <CardContent className="text-sm text-muted-foreground">
-                                            Page views are up 25% compared to last month.
-                                        </CardContent>
-                                    </Card>
+                                    <div className="flex flex-col gap-5">
+                                        <Card>
+                                            <CardHeader>
+                                                <CardTitle className="text-2xl">Сменить пароль</CardTitle>
+                                            </CardHeader>
+                                            <CardContent>
+                                                <div className="flex flex-col gap-3 items-start">
+                                                    <Field className="max-w-lg">
+                                                        <FieldLabel htmlFor="inline-end-input" className="text-lg">Введите старый пароль:</FieldLabel>
+                                                        <PasswordInput placeholder="Старый пароль"/>
+                                                    </Field>
+                                                    <Field className="max-w-lg">
+                                                        <FieldLabel htmlFor="inline-end-input" className="text-lg">Введите новый пароль:</FieldLabel>
+                                                        <PasswordInput placeholder="Новый пароль"/>
+                                                    </Field>
+                                                    <Field className="max-w-lg">
+                                                        <FieldLabel htmlFor="inline-end-input" className="text-lg">Введите новый пароль ещё раз:</FieldLabel>
+                                                        <PasswordInput placeholder="Повторите новый пароль"/>
+                                                    </Field>
+                                                </div>
+                                                <Button variant="outline" className="bg-primary-purple text-base text-white hover:text-primary-purple font-bold px-6 mt-4">
+                                                    Сменить
+                                                </Button>
+                                            </CardContent>
+                                        </Card>
+                                        <Card>
+                                            <CardHeader>
+                                                <CardTitle className="text-2xl">Отвязать ключ GitHub</CardTitle>
+                                            </CardHeader>
+                                            <CardContent className="text-base flex flex-col gap-3">
+                                                Данная кнопка отвяжет авторизационный ключ GitHub от CodeMentor. При следующем входе в CodeMentor вам придется снова авторизовываться через GitHub.
+                                                <Button variant="outline" className="bg-primary-purple max-w-sm text-base text-white hover:text-primary-purple font-bold px-6">
+                                                    Отвязать ключ GitHub
+                                                </Button>
+                                            </CardContent>
+                                        </Card>
+                                        <Card className="bg-red-500/10 text-red-500">
+                                            <CardHeader>
+                                                <CardTitle className="text-2xl">Удалить аккаунт</CardTitle>
+                                            </CardHeader>
+                                            <CardContent className="text-base flex flex-col gap-3 ">
+                                                Нажав кнопку ниже вы НАВСЕГДА удалите свой аккаунт. Также вы удалите ВСЕ свои решения и всю информацию о себе.
+                                                <span className="font-bold"> Удалив аккаунт, вы больше никогда не вернете его!</span>
+                                                а ещё мы будем грустить :(
+                                                <Button variant="outline" className="bg-red-500 max-w-sm text-base text-white hover:text-primary-purple font-bold px-6">
+                                                    Удалить аккаунт НАВСЕГДА
+                                                </Button>
+                                            </CardContent>
+                                        </Card>
+                                    </div>
                                 </TabsContent>
                                 <TabsContent value="challenges">
                                     <Card>

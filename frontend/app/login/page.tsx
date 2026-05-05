@@ -10,6 +10,7 @@ import {
 } from "@/react/components/ui/card"
 import { Input } from "@/react/components/ui/input"
 import { Label } from "@/react/components/ui/label"
+import {PasswordInput} from "@/react/components/ui/password-input";
 export default function Login(){
     return (
         <div className="flex min-h-screen flex-col  font-sans dark:bg-black">
@@ -37,7 +38,7 @@ export default function Login(){
                                             <div className="flex items-center">
                                                 <Label htmlFor="password">Введите пароль:</Label>
                                             </div>
-                                            <Input id="password" type="password" placeholder="**********" required />
+                                            <PasswordInput placeholder="Пароль" required={true}/>
                                             <span
                                             className=" inline-block text-sm underline-offset-4"
                                         >
