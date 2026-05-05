@@ -2,13 +2,14 @@
 
 import { Header } from "@/react/components/ui/header";
 import { Footer } from "@/react/components/ui/footer";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/react/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/react/components/ui/card";
 import { Avatar, AvatarImage } from "@/react/components/ui/avatar";
 import { Button } from "@/react/components/ui/button";
 import { Field, FieldLabel } from "@/react/components/ui/field"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/react/components/ui/tabs";
 import {Contact, LogOut, SquarePen} from "lucide-react";
 import {PasswordInput} from "@/react/components/ui/password-input";
+import {TaskCard} from "@/react/components/ui/challenge-card";
 
 
 export default function ProfileMain() {
@@ -170,7 +171,7 @@ export default function ProfileMain() {
                                                 Нажав кнопку ниже вы НАВСЕГДА удалите свой аккаунт. Также вы удалите ВСЕ свои решения и всю информацию о себе.
                                                 <span className="font-bold"> Удалив аккаунт, вы больше никогда не вернете его!</span>
                                                 а ещё мы будем грустить :(
-                                                <Button variant="outline" className="bg-red-500 max-w-sm text-base text-white hover:text-primary-purple font-bold px-6">
+                                                <Button variant="outline" className="bg-red-500 max-w-sm text-base text-white hover:text-red-500 font-bold px-6">
                                                     Удалить аккаунт НАВСЕГДА
                                                 </Button>
                                             </CardContent>
@@ -178,18 +179,47 @@ export default function ProfileMain() {
                                     </div>
                                 </TabsContent>
                                 <TabsContent value="challenges">
-                                    <Card>
-                                        <CardHeader>
-                                            <CardTitle>Reports</CardTitle>
-                                            <CardDescription>
-                                                Generate and download your detailed reports. Export data in
-                                                multiple formats for analysis.
-                                            </CardDescription>
-                                        </CardHeader>
-                                        <CardContent className="text-sm text-muted-foreground">
-                                            You have 5 reports ready and available to export.
-                                        </CardContent>
-                                    </Card>
+                                    <div className="flex flex-col gap-5">
+                                        <Card>
+                                            <CardHeader>
+                                                <CardTitle className="text-2xl">В процессе</CardTitle>
+                                            </CardHeader>
+                                            <CardContent >
+                                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                                    <TaskCard
+                                                    title="Тест скорости печати"
+                                                    description="Реализуйте сайт для оценки скорости печатания пользователя, рассчитайте количество слов в минуту и точность, а также"
+                                                    imageUrl="https://edu-sigma.ru/wp-content/uploads/2023/05/%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.jpg"
+                                                    priceType="free"
+                                                    category="Frontend"
+                                                    technologies={["React", "JS/TS"]}
+                                                    currentBugs={2}
+                                                    />
+                                                    <TaskCard
+                                                        title="Трекер настроения"
+                                                        description="Создайте многостраничный сайт для трекинга настроения пользователя с хранением состояния"
+                                                        imageUrl="https://i.etsystatic.com/30134249/r/il/4277dd/3161817690/il_fullxfull.3161817690_j0un.jpg"
+                                                        priceType="subscription"
+                                                        category="Fullstack"
+                                                        technologies={["React", "FastAPI", "JS/TS", "Python", "ML"]}
+                                                        currentBugs={7}
+                                                    />
+                                                </div>
+                                            </CardContent>
+                                        </Card>
+                                        <Card>
+                                            <CardHeader>
+                                                <CardTitle className="text-2xl">Завершенные</CardTitle>
+                                            </CardHeader>
+                                            <CardContent className="text-base flex flex-col gap-3 text-muted-foreground items-center py-15">
+                                                Завершите задачу и прикрепите решение. Оно отобразится тут
+                                                <Button variant="outline" className="bg-primary-purple max-w-min text-base text-white hover:text-primary-purple font-bold px-6">
+                                                    Добавить решение
+                                                </Button>
+                                            </CardContent>
+                                        </Card>
+                                    </div>
+
                                 </TabsContent>
                             </Tabs>
                         </div>
