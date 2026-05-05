@@ -7,14 +7,14 @@ import { Avatar, AvatarImage } from "@/react/components/ui/avatar";
 import { Button } from "@/react/components/ui/button";
 import { Field, FieldLabel } from "@/react/components/ui/field"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/react/components/ui/tabs";
-import {Contact, LogOut, SquarePen} from "lucide-react";
+import {Contact, LogOut, Pencil, SquarePen} from "lucide-react";
 import {PasswordInput} from "@/react/components/ui/password-input";
 import {TaskCard} from "@/react/components/ui/challenge-card";
 
 
 export default function ProfileMain() {
     return (
-        <div className="flex min-h-screen flex-col bg-background-main font-sans dark:bg-black">
+        <div className="flex min-h-screen flex-col bg-background-main  dark:bg-black">
             <Header />
             <main className="flex-1">
                 <div className="px-40 py-12 ml-8">
@@ -26,11 +26,14 @@ export default function ProfileMain() {
                             <Card className="w-80">
                                 <CardContent className="pt-6">
                                     <div className="flex flex-col items-center text-center">
-                                        <Avatar className="h-50 w-50">
+                                        <Avatar className="h-50 w-50 relative">
+                                            <div className="absolute z-20 bottom-0 right-0 p-2 bg-black text-white rounded-full">
+                                                <Pencil />
+                                            </div>
                                             <AvatarImage
                                                 src="https://github.com/shadcn.png"
                                                 alt="@shadcn"
-                                                className="grayscale"
+                                                className="grayscale z-10"
                                             />
                                         </Avatar>
                                         <h3 className="mt-4 text-xl text-primary-purple font-bold">luminous453</h3>
@@ -213,7 +216,7 @@ export default function ProfileMain() {
                                             </CardHeader>
                                             <CardContent className="text-base flex flex-col gap-3 text-muted-foreground items-center py-15">
                                                 Завершите задачу и прикрепите решение. Оно отобразится тут
-                                                <Button variant="outline" className="bg-primary-purple max-w-min text-base text-white hover:text-primary-purple font-bold px-6">
+                                                <Button variant="outline" className="bg-primary-purple max-w-min text-base text-white hover:text-primary-purple font-bold px-6" >
                                                     Добавить решение
                                                 </Button>
                                             </CardContent>

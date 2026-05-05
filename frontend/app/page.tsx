@@ -1,6 +1,7 @@
 import {Button} from "@/react/components/ui/button";
 import {Header} from "@/react/components/ui/header";
 import {Footer} from "@/react/components/ui/footer";
+import {Avatar, AvatarImage} from "@/react/components/ui/avatar";
 
 export default function Home() {
   return (
@@ -47,9 +48,11 @@ export default function Home() {
               Уже <span className="text-primary-purple underline">более 20</span> пет-проектов ждут вас!
             </h2>
               <div className="flex items-center justify-center gap-6 ">
-                <Button variant="outline" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer ">
+                <a href="/catalog">
+                  <Button variant="outline" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer">
                     Каталог задач
-                </Button>
+                  </Button>
+                </a>
                 <Button className="">
                     Подключить GitHub
                 </Button>
@@ -70,17 +73,47 @@ export default function Home() {
                 <p className="items-start">
                   “Есть над чем задуматься: некоторые особенности внутренней политики формируют глобальную экономическую сеть однозначно”
                 </p>
-                <p className="mt-auto">
-                  Моисеенко Александр
-                </p>
+                <div className="flex gap-4 mt-auto">
+                  <Avatar className="h-15 w-15 ">
+                    <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                        className="grayscale z-10"
+                    />
+                  </Avatar>
+                  <div className="flex flex-col gap-0.5">
+                    <p className="text-lg mt-auto">
+                      Моисеенко Александр
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Ведущий разработчик
+                    </p>
+                  </div>
+                </div>
+
+
               </div>
               <div className="flex flex-col gap-3 px-6 py-4.5 items-start border border-[#DEDEDE] rounded-md flex-1  ">
                 <p>
                   “Есть над чем задуматься: некоторые особенности внутренней. В своём стремлении повысить качество жизни, они забывают, что выбранный нами инновационный”
                 </p>
-                <p className="mt-auto">
-                  Новиков Даниил
-                </p>
+                <div className="flex gap-4">
+                  <Avatar className="h-15 w-15 ">
+                    <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                        className="grayscale z-10"
+                    />
+                  </Avatar>
+                  <div className="flex flex-col gap-0.5">
+                    <p className="text-lg mt-auto">
+                      Новиков Даниил
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      HR-менеджер
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="flex flex-row gap-3 px-6 items-stretch w-full">
@@ -99,7 +132,7 @@ export default function Home() {
                 <div className="flex flex-row gap-3">
                   <div className="flex flex-col gap-6">
                     <div className="flex flex-col border-b border-white/15 pb-4">
-                      <h1 className="text-[#B6A2D4] text-xl">
+                      <h1 className="text-primary-purple text-xl font-bold">
                         001
                       </h1>
                       <p className="text-xl">
@@ -111,7 +144,7 @@ export default function Home() {
                     </div>
                     <div>
                       <div className="flex flex-col border-b border-white/15 pb-4">
-                        <p className="text-[#B6A2D4] text-xl">
+                        <p className="text-primary-purple text-xl font-bold">
                           002
                         </p>
                         <p className="text-xl">
@@ -125,7 +158,7 @@ export default function Home() {
                   </div>
                   <div className="flex flex-col gap-6">
                     <div className="flex flex-col border-b border-white/15 pb-4">
-                      <p className="text-[#B6A2D4] text-xl">
+                      <p className="text-primary-purple text-xl font-bold">
                         003
                       </p>
                       <p className="text-xl">
@@ -137,7 +170,7 @@ export default function Home() {
                     </div>
                     <div>
                       <div className="flex flex-col border-b border-white/15 pb-4">
-                        <p className="text-[#B6A2D4] text-xl">
+                        <p className="text-primary-purple text-xl font-bold">
                           004
                         </p>
                         <p className="text-xl">

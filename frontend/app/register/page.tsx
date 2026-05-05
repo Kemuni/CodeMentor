@@ -51,11 +51,12 @@ export default function Register(){
                                 </form>
                             </CardContent>
                             <CardFooter className="flex-col gap-6">
-                                <Button type="submit"
-                                        className=" bg-primary-purple hover:bg-gray-400 hover:text-white px-6">
-                                Зарегистрироваться
-                                </Button>
-                                <Button variant="outline" className="bg-black text-white px-6">
+                                <a href="/profile">
+                                    <Button type="submit" className=" bg-primary-purple hover:bg-white hover:text-primary-purple border border-primary-purple ">
+                                        Зарегистрироваться
+                                    </Button>
+                                </a>
+                                <Button variant="outline" className="bg-black text-white px-6 hover:border hover:border-black ">
                                     Войти с помощью GitHub
                                 </Button>
                                 <span
