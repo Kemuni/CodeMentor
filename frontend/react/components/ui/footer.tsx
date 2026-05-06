@@ -11,27 +11,18 @@ export function Footer(){
                     </div>
                     <div className="flex flex-col items-start">
                         <h1 className="text-white gap-2 m-3">Ссылки</h1>
-
-                        <Button variant="link" asChild>
-                            <a href="/" className="hover:cursor-pointer text-white">
-                                Главная
-                            </a>
-                        </Button>
-                        <Button variant="link" asChild>
-                            <a href="/catalog" className="hover:cursor-pointer text-white">
-                                Каталог задач
-                            </a>
-                        </Button>
-                        <Button variant="link" asChild>
-                            <a href="/" className="hover:cursor-pointer text-white">
-                                Топ решений
-                            </a>
-                        </Button>
-                        <Button variant="link" asChild>
-                            <a href="/" className="hover:cursor-pointer text-white">
-                                Как получить портфолио
-                            </a>
-                        </Button>
+                        <a href="/">
+                            <Button variant="link" className="hover:cursor-pointer text-white"> Главная </Button>
+                        </a>
+                        <a href="/catalog">
+                            <Button variant="link" className="hover:cursor-pointer text-white"> Каталог задач </Button>
+                        </a>
+                        <a href="/">
+                            <Button variant="link" className="hover:cursor-pointer text-white"> Топ решений </Button>
+                        </a>
+                        <a href="/">
+                            <Button variant="link" className="hover:cursor-pointer text-white"> Как получить портфолио </Button>
+                        </a>
                     </div>
                     <div className="flex flex-col">
                         <h1 className="pb-2 text-white">Контакты</h1>
