@@ -72,9 +72,9 @@ export default function ProfileMain() {
                                     </div>
                                 </CardContent>
                                 <CardFooter>
-                                    <Button variant="outline" className="w-full gap-2 text-primary-purple border border-primary-purple hover:bg-primary-purple hover:text-white hover:cursor-pointer">
-                                        К задачам
-                                    </Button>
+                                    <a href="/catalog" className="w-full">
+                                        <Button variant="outline" className="w-full gap-2 text-primary-purple border border-primary-purple hover:bg-primary-purple hover:text-white hover:cursor-pointer"> К задачам </Button>
+                                    </a>
                                 </CardFooter>
                             </Card>
                         </div>
@@ -120,9 +120,9 @@ export default function ProfileMain() {
                                             <CardContent className="flex items-center justify-center text-center text-base text-muted-foreground">
                                                 <div className="flex flex-col gap-3 items-center">
                                                     Тут будут отображаться ваши решения задач...
-                                                    <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white">
-                                                        Перейти к задачам
-                                                    </Button>
+                                                    <a href="/catalog">
+                                                        <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white max-w-min text-base font-bold px-6"> Перейти к задачам </Button>
+                                                    </a>
                                                 </div>
 
                                             </CardContent>
@@ -174,7 +174,7 @@ export default function ProfileMain() {
                                                 Нажав кнопку ниже вы НАВСЕГДА удалите свой аккаунт. Также вы удалите ВСЕ свои решения и всю информацию о себе.
                                                 <span className="font-bold"> Удалив аккаунт, вы больше никогда не вернете его!</span>
                                                 а ещё мы будем грустить :(
-                                                <Button variant="outline" className="bg-red-500 max-w-sm text-base text-white hover:text-red-500 border border-red-500 cursor-pointer font-bold px-6">
+                                                <Button variant="outline" className="bg-red-500 max-w-sm text-base text-white hover:text-red-500 hover:bg-white border border-red-500 cursor-pointer font-bold px-6">
                                                     Удалить аккаунт НАВСЕГДА
                                                 </Button>
                                             </CardContent>
@@ -216,9 +216,9 @@ export default function ProfileMain() {
                                             </CardHeader>
                                             <CardContent className="text-base flex flex-col gap-3 text-muted-foreground items-center py-15">
                                                 Завершите задачу и прикрепите решение. Оно отобразится тут
-                                                <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white max-w-min text-base font-bold px-6" >
-                                                    Добавить решение
-                                                </Button>
+                                                <a href="/publication">
+                                                    <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white max-w-min text-base font-bold px-6"> Добавить решение </Button>
+                                                </a>
                                             </CardContent>
                                         </Card>
                                     </div>

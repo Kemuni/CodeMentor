@@ -32,6 +32,7 @@ export default function Login(){
                                                 type="email"
                                                 placeholder="m@example.com"
                                                 required
+                                                className="bg-white border border-[#636363]"
                                             />
                                         </div>
                                         <div className="flex flex-col gap-2">
@@ -40,7 +41,7 @@ export default function Login(){
                                             </div>
                                             <PasswordInput placeholder="Пароль" required={true}/>
                                             <span
-                                            className=" inline-block text-sm underline-offset-4"
+                                            className=" inline-block text-sm text-muted-foreground underline-offset-4"
                                         >
                                             Забыли пароль? <a className="underline text-primary-purple" href="#"> Восстановить пароль</a>
                                         </span>

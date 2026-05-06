@@ -12,14 +12,14 @@ export interface PasswordInputProps {
 export function PasswordInput({id, placeholder, required}: PasswordInputProps) {
     const [isHidden, setIsHidden] = useState<boolean>(true);
     return (
-        <InputGroup >
+        <InputGroup className="bg-white border border-[#636363]">
             <InputGroupInput
                 id={id}
                 type={isHidden? "password" : "text"}
                 placeholder={placeholder}
                 required={required}
             />
-            <InputGroupAddon onClick={()=> setIsHidden(!isHidden ) } align="inline-end" className="cursor-pointer">
+            <InputGroupAddon onClick={()=> setIsHidden(!isHidden ) } align="inline-end" className="cursor-pointer ">
                 {
                     isHidden ?<EyeIcon /> :  <EyeOffIcon />
                 }

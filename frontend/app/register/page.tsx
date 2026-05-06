@@ -32,6 +32,7 @@ export default function Register(){
                                                 type="email"
                                                 placeholder="m@example.com"
                                                 required
+                                                className="bg-white border border-[#636363]"
                                             />
                                         </div>
                                         <div className="flex flex-col gap-2">
