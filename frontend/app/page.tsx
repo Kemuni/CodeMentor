@@ -49,11 +49,11 @@ export default function Home() {
             </h2>
               <div className="flex items-center justify-center gap-6 ">
                 <a href="/catalog">
-                  <Button variant="outline" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer">
+                  <Button variant="outline" className="text-primary-purple border border-primary-purple hover:bg-primary-purple hover:text-white hover:cursor-pointer">
                     Каталог задач
                   </Button>
                 </a>
-                <Button className="">
+                <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white">
                     Подключить GitHub
                 </Button>
               </div>

@@ -1,42 +1,64 @@
 import {Header} from "@/react/components/ui/header";
 import {Footer} from "@/react/components/ui/footer";
-import {Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle} from "@/react/components/ui/card";
-import {Badge} from "lucide-react";
-import {Button} from "@base-ui/react";
+import {TaskDetailCard} from "@/react/components/ui/card-overview";
+import {Card, CardContent, CardHeader, CardTitle} from "@/react/components/ui/card";
+
 
 export default function Overview() {
     return (
         <div className="flex min-h-screen flex-col bg-background-main dark:bg-black">
             <Header />
             <main className="flex-1">
-                <div className="flex flex-col ml-8 px-40 bg-background-main py-12">
+                <div className="flex flex-col ml-8 px-40 bg-background-main pt-12 pb-30 gap-8">
                     <h1 className="text-5xl font-bold tracking-tight  mb-10">
                         Обзор задачи
                     </h1>
-                    <div className="grid grid-cols-2 gap-10">
-                        <img
-                            src="https://edu-sigma.ru/wp-content/uploads/2023/05/%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.jpg"
-                            className="relative z-20 aspect-video object-cover"
-                        />
-                        <Card className="relative mx-auto w-full max-w-sm pt-0">
-                            <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
-                            <img
-                                src="https://avatar.vercel.sh/shadcn1"
-                                alt="Event cover"
-                                className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
-                            />
-                            <CardHeader>
-                                <CardTitle>Design systems meetup</CardTitle>
-                                <CardDescription>
-                                    A practical talk on component APIs, accessibility, and shipping
-                                    faster.
-                                </CardDescription>
-                            </CardHeader>
-                            <CardFooter>
-                                <Button className="w-full">View Event</Button>
-                            </CardFooter>
-                        </Card>
-                    </div>
+                    <TaskDetailCard
+                        imageUrl="https://edu-sigma.ru/wp-content/uploads/2023/05/%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.jpg"
+                        title="Тест скорости печати"
+                        description="Реализуйте сайт для оценки скорости печатания пользователя, рассчитайте количество слов в минуту и точность, а также иные параметры."
+                        solutionsCount={250}
+                        viewsCount={2000}
+                        priceType={"free"}
+                        category={"Frontend"}
+                        technologies={["React", "JS/TS"]}
+                        currentBugs={2}/>
+                    <Card className="w-full">
+                        <CardHeader>
+                            <CardTitle>
+                                <h1 className="text-3xl ">
+                                    Техническое задание
+                                </h1>
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p>
+                                Ваша задача состоит в том, чтобы создать это приложение для проверки скорости набора текста и максимально приблизить его к дизайну.
+                                <br/>
+                                <br/> Вы можете использовать любые инструменты, которые вам нравятся, чтобы выполнить задание. Так что, если у вас есть что-то, в чем вы хотели бы попрактиковаться, не стесняйтесь.
+                                <br/>
+                                <br/> Мы храним данные о прохождении в локальном файле data.json. Вы можете использовать его для случайного выбора прохождений различной сложности.
+                                <br/>
+                                <br/> Ваши пользователи должны иметь возможность:
+                                <br/>- Начать тест, нажав кнопку "Пуск" или щелкнув по прохождению и введя
+                                <br/>- Выберите уровень сложности (Легкий, средний, сложный) для прохождения различной сложности
+                                <br/>- Переключайтесь между режимом "Таймер (60 секунд)" и режимом "Прохождение" (таймер отсчитывает время, без ограничений)
+                                <br/> - Перезапускайте в любое время, чтобы получить новое случайное прохождение выбранной сложности
+                                <br/>- Смотрите статистику WPM, точности и времени в реальном времени во время набора текста
+                                <br/>- Смотрите визуальную обратную связь, показывающую правильные символы (зеленые), ошибки (красные/ подчеркнутые) и положение курсора
+                                <br/>- Исправляйте ошибки с помощью пробела (исходные ошибки по-прежнему учитываются при определении точности)
+                                <br/>- Просматривайте результаты, показывающие WPM, точность и символы (правильные/ неправильные) после завершения теста
+                                <br/>- Увидев сообщение "Базовый уровень установлен!" во время своего первого теста, они устанавливают свой личный рекорд
+                                <br/>- Наблюдайте за тем, как участники, побившие свой личный рекорд, празднуют победу с помощью конфетти.
+                                <br/>- Следите за тем, чтобы их личный рекорд сохранялся в течение сеансов с помощью localStorage
+                                <br/>- Просматривайте оптимальную компоновку в зависимости от размера экрана своего устройства
+                                <br/>- Смотрите состояния наведения курсора мыши и фокусировки для всех интерактивных элементов
+                                <br/> - Загрузите проект и ознакомьтесь с файлом README.md. Это предоставит более подробную информацию о проекте и поможет вам настроиться.
+                                <br/>
+                                <br/>Хотите получить поддержку в решении задачи? Присоединяйтесь к нашему сообществу и задавайте вопросы в канале помощи.
+                            </p>
+                        </CardContent>
+                    </Card>
                 </div>
             </main>
             <Footer />

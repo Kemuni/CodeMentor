@@ -118,7 +118,7 @@ export default function CatalogPage() {
                         />
                     </div>
                     <div className="flex justify-center items-center pt-4">
-                        <Button variant="outline" className="w-auto bg-primary-purple text-white hover:text-primary-purple hover:cursor-pointer">
+                        <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white"    >
                             Показать больше
                         </Button>
                     </div>

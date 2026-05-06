@@ -24,10 +24,10 @@ export function Header(){
                 </nav>
                 <div className="flex items-center justify-end gap-3">
                     <a href="/login">
-                        <Button variant="outline" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer"> Войти </Button>
+                        <Button variant="outline" className="text-primary-purple border border-primary-purple hover:bg-primary-purple hover:text-white hover:cursor-pointer"> Войти </Button>
                     </a>
                     <a href="/register">
-                        <Button className="hover:cursor-pointer">Регистрация</Button>
+                        <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white">Регистрация</Button>
                     </a>
 
                 </div>

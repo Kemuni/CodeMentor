@@ -46,7 +46,7 @@ export default function ProfileMain() {
                                 <CardFooter>
                                     <Button
                                         variant="outline"
-                                        className="w-full gap-2 border font-bold border-red-500 text-red-500 hover:text-red-500"
+                                        className="w-full gap-2 border font-bold border-red-500 text-red-500 hover:text-white hover:bg-red-500 cursor-pointer"
                                     >
                                         <LogOut className="h-4 w-4" />
                                         Выйти из профиля
@@ -72,7 +72,7 @@ export default function ProfileMain() {
                                     </div>
                                 </CardContent>
                                 <CardFooter>
-                                    <Button variant="outline" className="w-full gap-2 border border-primary-purple text-primary-purple hover:text-primary-purple font-bold">
+                                    <Button variant="outline" className="w-full gap-2 text-primary-purple border border-primary-purple hover:bg-primary-purple hover:text-white hover:cursor-pointer">
                                         К задачам
                                     </Button>
                                 </CardFooter>
@@ -120,7 +120,7 @@ export default function ProfileMain() {
                                             <CardContent className="flex items-center justify-center text-center text-base text-muted-foreground">
                                                 <div className="flex flex-col gap-3 items-center">
                                                     Тут будут отображаться ваши решения задач...
-                                                    <Button variant="outline" className="gap-2 bg-primary-purple text-white hover:text-primary-purple font-bold">
+                                                    <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white">
                                                         Перейти к задачам
                                                     </Button>
                                                 </div>
@@ -150,7 +150,7 @@ export default function ProfileMain() {
                                                         <PasswordInput placeholder="Повторите новый пароль"/>
                                                     </Field>
                                                 </div>
-                                                <Button variant="outline" className="bg-primary-purple text-base text-white hover:text-primary-purple font-bold px-6 mt-4">
+                                                <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white font-bold px-6 mt-4 text-base">
                                                     Сменить
                                                 </Button>
                                             </CardContent>
@@ -161,7 +161,7 @@ export default function ProfileMain() {
                                             </CardHeader>
                                             <CardContent className="text-base flex flex-col gap-3">
                                                 Данная кнопка отвяжет авторизационный ключ GitHub от CodeMentor. При следующем входе в CodeMentor вам придется снова авторизовываться через GitHub.
-                                                <Button variant="outline" className="bg-primary-purple max-w-sm text-base text-white hover:text-primary-purple font-bold px-6">
+                                                <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white font-bold px-6 max-w-sm text-base">
                                                     Отвязать ключ GitHub
                                                 </Button>
                                             </CardContent>
@@ -174,7 +174,7 @@ export default function ProfileMain() {
                                                 Нажав кнопку ниже вы НАВСЕГДА удалите свой аккаунт. Также вы удалите ВСЕ свои решения и всю информацию о себе.
                                                 <span className="font-bold"> Удалив аккаунт, вы больше никогда не вернете его!</span>
                                                 а ещё мы будем грустить :(
-                                                <Button variant="outline" className="bg-red-500 max-w-sm text-base text-white hover:text-red-500 font-bold px-6">
+                                                <Button variant="outline" className="bg-red-500 max-w-sm text-base text-white hover:text-red-500 border border-red-500 cursor-pointer font-bold px-6">
                                                     Удалить аккаунт НАВСЕГДА
                                                 </Button>
                                             </CardContent>
@@ -216,7 +216,7 @@ export default function ProfileMain() {
                                             </CardHeader>
                                             <CardContent className="text-base flex flex-col gap-3 text-muted-foreground items-center py-15">
                                                 Завершите задачу и прикрепите решение. Оно отобразится тут
-                                                <Button variant="outline" className="bg-primary-purple max-w-min text-base text-white hover:text-primary-purple font-bold px-6" >
+                                                <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white max-w-min text-base font-bold px-6" >
                                                     Добавить решение
                                                 </Button>
                                             </CardContent>

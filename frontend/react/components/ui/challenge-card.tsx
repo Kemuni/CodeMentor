@@ -108,7 +108,7 @@ export function TaskCard({
                     <h1 className="text-primary-purple text-3xl font-bold">
                         {currentBugs}
                     </h1>
-                    <Bug className="size-7 pb-1" />
+                    <Bug className="size-7 pb-1 text-primary-purple" />
                     <p className="font-bold pb-1">/10</p>
                 </div>
 
