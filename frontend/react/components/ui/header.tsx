@@ -1,10 +1,14 @@
 import {Button} from "@/react/components/ui/button";
+import Image from "next/image";
+import Logo from "@/public/Logo.svg";
 
 export function Header(){
     return (
-        <header className="sticky top-0 z-10 border-b border-zinc-200 bg-background-main backdrop-blur-sm dark:border-zinc-800 dark:bg-black/80">
+        <header className="sticky top-0 z-50 border-b border-zinc-200 bg-background-main backdrop-blur-sm">
             <div className="grid grid-cols-3 items-center justify-between px-50 py-4">
-                <div className="text-xl font-bold text-black dark:text-white">КодМентор</div>
+                <a href="/">
+                    <Image src={Logo} alt="" className="w-20 h-10 " />
+                </a>
                 <nav className="hidden gap-6 sm:flex justify-center">
                     <a href="/catalog">
                         <Button variant="ghost" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer">
