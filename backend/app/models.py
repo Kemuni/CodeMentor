@@ -13,6 +13,9 @@ class ChallengeTagsLink(SQLModel, table=True):
     challenge_id: int = Field(foreign_key="challenge.id", primary_key=True)
     tag_id: int = Field(foreign_key="tag.id", primary_key=True)
 
+    # challenge: "Challenge" = Relationship(back_populates="challenge_links")
+    # tag: "Tag" = Relationship(back_populates="tag_links")
+
 
 class Tag(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)

@@ -26,6 +26,7 @@ class ChallengeBody(BaseModel):
     difficulty: int = Field(gt=0, le=10)
     description: str
     image_url: str
+    tags: list[str]
 
 class TagBody(BaseModel):
     name: str
