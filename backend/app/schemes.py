@@ -2,7 +2,8 @@ from typing import Generic, TypeVar, Optional
 
 from pydantic import BaseModel, Field
 
-from app.models import ChallengeType
+from app.models import ChallengeType, Tag
+
 
 T = TypeVar('T')
 
@@ -30,3 +31,7 @@ class ChallengeBody(BaseModel):
 
 class TagBody(BaseModel):
     name: str
+
+
+class ReadChallenge(ChallengeBody):
+    tags: list[Tag]

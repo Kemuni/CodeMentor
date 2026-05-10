@@ -1,7 +1,7 @@
 from pydantic import ValidationError
 from sqlalchemy.exc import IntegrityError
 from fastapi import HTTPException
-from response import ErrorResponse
+from app.utils.response import ErrorResponse
 
 
 

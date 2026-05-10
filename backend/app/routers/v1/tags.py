@@ -9,7 +9,7 @@ from app.schemes import TagBody, APIResponse
 from app.utils.response import SuccessResponse, ErrorResponse
 from sqlmodel import select
 
-from utils.exception_handler import handle_exception
+from app.utils.exception_handler import handle_exception
 
 router = APIRouter(prefix='/v1/tags', tags=['tags'])
 
