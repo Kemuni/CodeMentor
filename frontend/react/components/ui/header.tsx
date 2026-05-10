@@ -11,17 +11,17 @@ export function Header(){
                 </a>
                 <nav className="hidden gap-6 sm:flex justify-center">
                     <a href="/catalog">
-                        <Button variant="ghost" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer">
+                        <Button variant="ghost" className="text-lg font-medium text-primary-purple hover:text-primary-purple hover:cursor-pointer " >
                             Каталог задач
                         </Button>
                     </a>
                     <a href="/catalog">
-                        <Button variant="ghost" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer">
+                        <Button variant="ghost" className=" text-lg font-medium text-primary-purple hover:text-primary-purple hover:cursor-pointer">
                             Топ решений
                         </Button>
                     </a>
                     <a href="/catalog">
-                        <Button variant="ghost" className="text-primary-purple hover:text-primary-purple hover:cursor-pointer">
+                        <Button variant="ghost" className=" text-lg font-medium text-primary-purple hover:text-primary-purple hover:cursor-pointer">
                             Направления
                         </Button>
                     </a>

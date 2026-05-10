@@ -4,12 +4,14 @@ import { Header } from "@/react/components/ui/header";
 import { Footer } from "@/react/components/ui/footer";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/react/components/ui/breadcrumb"
 import Link from "next/link";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/react/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader } from "@/react/components/ui/card"
 import { Button } from "@/react/components/ui/button";
 import { Star, Bug } from "lucide-react";
 import { Input } from "@/react/components/ui/input";
 import { Textarea } from "@/react/components/ui/textarea";
 import { Counter } from "@/react/components/ui/counter";
+import Image from "next/image";
+import AsteriskSmall from "@/public/AsteriskSmall.svg";
 
 export default function PublicationReview() {
 
@@ -17,10 +19,12 @@ export default function PublicationReview() {
         <div className="flex min-h-screen flex-col bg-background-main ">
             <Header />
             <main className="flex-1">
-                <div className="flex flex-col ml-8 px-40 bg-background-main pt-12 pb-30 gap-3">
-                    <h1 className="text-5xl font-bold tracking-tight mb-8">
-                        Публикация решения
+                <div className="flex flex-col ml-8 px-40 bg-background-main pt-12 pb-30 gap-3 relative">
+                    <h1 className="text-5xl font-[tektur] font-medium text-black mb-8">
+                        <span className="underline decoration-wavy decoration-primary-purple underline-offset-10"> Публикация</span> решения
                     </h1>
+                    <Image src={AsteriskSmall} alt="" className="w-25 h-25 absolute left-[39%] top-[1%] " />
+
                     <div className="flex flex-col ml-15 gap-3">
                         <Breadcrumb>
                             <BreadcrumbList>
@@ -40,7 +44,7 @@ export default function PublicationReview() {
                         <Card className="w-full">
                             <CardHeader>
                                 <div className="flex flex-row justify-between w-full mt-auto">
-                                    <CardTitle className="text-2xl">Ответьте на пару вопросов</CardTitle>
+                                    <h1 className="text-2xl font-[tektur] font-medium">Ответьте на пару вопросов</h1>
                                 </div>
                             </CardHeader>
                             <CardContent>
@@ -91,7 +95,7 @@ export default function PublicationReview() {
                                     </p>
                                 </div>
                                 <a href="/publication/review/result">
-                                    <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white px-4">
+                                    <Button className="text-lg bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white px-4">
                                         Опубликовать
                                     </Button>
                                 </a>

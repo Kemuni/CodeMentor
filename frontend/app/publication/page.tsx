@@ -4,10 +4,12 @@ import { useState } from "react";
 import {Header} from "@/react/components/ui/header";
 import {Footer} from "@/react/components/ui/footer";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from "@/react/components/ui/breadcrumb"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/react/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader } from "@/react/components/ui/card"
 import {Button} from "@/react/components/ui/button";
 import {ChevronRight, Plus} from "lucide-react";
 import {TaskCardPublication} from "@/react/components/ui/card-publication";
+import AsteriskSmall from "@/public/AsteriskSmall.svg";
+import Image from "next/image";
 export default function Publication() {
 
     const [selectedTask, setSelectedTask] = useState<string>("");
@@ -22,10 +24,11 @@ export default function Publication() {
         <div className="flex min-h-screen flex-col bg-background-main ">
             <Header />
             <main className="flex-1">
-                <div className="flex flex-col ml-8 px-40 bg-background-main pt-12 pb-30 gap-3">
-                    <h1 className="text-5xl font-bold tracking-tight mb-8">
-                        Публикация решения
+                <div className="flex flex-col ml-8 px-40 bg-background-main pt-12 pb-30 gap-3 relative">
+                    <h1 className="text-5xl font-[tektur] font-medium text-black mb-8">
+                        <span className="underline decoration-wavy decoration-primary-purple underline-offset-10"> Публикация</span> решения
                     </h1>
+                    <Image src={AsteriskSmall} alt="" className="w-25 h-25 absolute left-[39%] top-[1%] " />
                     <div className="flex flex-col ml-15 gap-3">
                         <Breadcrumb>
                             <BreadcrumbList>
@@ -39,7 +42,7 @@ export default function Publication() {
                         <Card className="w-full">
                             <CardHeader>
                                 <div className="flex flex-row justify-between w-full mt-auto">
-                                    <CardTitle className="text-2xl">Какую задачу вы решили?</CardTitle>
+                                    <h1 className="text-2xl font-[tektur] font-medium">Какую задачу вы решили?</h1>
                                     <Button variant="outline" className="text-primary-purple border border-primary-purple hover:bg-primary-purple hover:text-white hover:cursor-pointer">
                                         <Plus />
                                         Добавить задачу

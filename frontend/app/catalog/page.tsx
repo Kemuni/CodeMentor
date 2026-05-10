@@ -8,17 +8,20 @@ import {
 } from "@/react/components/ui/input-group"
 import { Funnel, Info, SearchIcon} from "lucide-react";
 import {TaskCard} from "@/react/components/ui/challenge-card";
+import AsteriskSmall from "@/public/AsteriskSmall.svg";
+import Image from "next/image";
 
 
 export default function CatalogPage() {
     return (
-        <div className="flex min-h-screen flex-col bg-red-50 font-sans dark:bg-black">
+        <div className="flex flex-col bg-background-main font-sans ">
             <Header/>
             <main className="flex-1">
-                <div className="flex flex-col justify-center px-40 bg-background-main pt-12 pb-8 dark:bg-black gap-5">
-                    <h1 className="text-5xl font-bold tracking-tight dark:text-white text-primary-purple">
-                        Каталог задач
+                <div className="flex flex-col justify-center px-40 bg-background-main pt-12 pb-8  gap-5 relative">
+                    <h1 className="text-5xl font-[tektur] font-medium text-black ">
+                        <span className="underline decoration-wavy decoration-primary-purple underline-offset-10"> Каталог</span> задач
                     </h1>
+                    <Image src={AsteriskSmall} alt="" className="w-25 h-25 absolute left-[28%] top-[1%] " />
                     <div className="flex flex-row justify-between text-center w-full pt-5">
                         <div className="flex flex-col gap-3 w-full">
                             <div className="flex flex-row justify-between w-full items-center">
@@ -118,7 +121,7 @@ export default function CatalogPage() {
                         />
                     </div>
                     <div className="flex justify-center items-center pt-4">
-                        <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white"    >
+                        <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white px-6"    >
                             Показать больше
                         </Button>
                     </div>

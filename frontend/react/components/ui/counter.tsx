@@ -45,9 +45,9 @@ export function Counter({
             </Button>
 
             <div className="flex items-center justify-center gap-1">
-                <span className="text-3xl font-bold text-primary-purple">{value}</span>
+                <span className="text-3xl font-bold text-primary-purple font-[tektur]">{value}</span>
                 {icon}
-                {label && <span className="text-lg text-muted-foreground">{label}</span>}
+                {label && <span className="text-lg text-muted-foreground font-[tektur] font-medium">{label}</span>}
             </div>
 
             <Button

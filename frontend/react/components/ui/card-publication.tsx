@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/react/components/ui/card";
+import { Card, CardDescription, CardFooter, CardHeader } from "@/react/components/ui/card";
 import { Badge } from "@/react/components/ui/badge";
 import { Bug, Check } from "lucide-react";
 
@@ -90,7 +90,7 @@ export function TaskCardPublication({
             />
 
             <CardHeader>
-                <CardTitle>{title}</CardTitle>
+                <h1 className="text-xl font-[tektur] font-medium">{title}</h1>
 
                 <div className="flex flex-row flex-wrap gap-1">
                     {technologies.map((tech, index) => (
@@ -109,11 +109,11 @@ export function TaskCardPublication({
 
             <CardFooter className="flex flex-row justify-between w-full mt-auto">
                 <div className="flex flex-row items-end">
-                    <h1 className="text-primary-purple text-3xl font-bold">
+                    <h1 className="text-primary-purple text-3xl font-[tektur] font-medium">
                         {currentBugs}
                     </h1>
                     <Bug className="size-7 pb-1 text-primary-purple" />
-                    <p className="font-bold pb-1">/10</p>
+                    <p className="pb-1 font-[tektur] font-medium text-muted-foreground">/10</p>
                 </div>
 
                 <div

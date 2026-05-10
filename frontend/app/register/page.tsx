@@ -5,22 +5,28 @@ import {
     Card,
     CardContent,
     CardFooter,
-    CardHeader,
-    CardTitle,
+    CardHeader
 } from "@/react/components/ui/card"
 import { Input } from "@/react/components/ui/input"
 import { Label } from "@/react/components/ui/label"
 import {PasswordInput} from "@/react/components/ui/password-input";
+import Image from "next/image";
+import AsteriskSmall from "@/public/AsteriskSmall.svg";
+import Ricky from "@/public/Ricky.svg";
+import Teewee from "@/public/Teewee.svg";
 export default function Register(){
     return (
         <div className="flex min-h-screen flex-col  font-sans dark:bg-black">
             <Header/>
             <main className="flex-1 bg-background-main ">
-                <div className="flex flex-col justify-center px-40 bg-background-main pt-12 pb-8 dark:bg-black gap-5">
-                    <div className="flex flex-col items-center px-40 py-20 bg-background-main ">
+                <div className="flex flex-col justify-center px-40 bg-background-main pt-12 pb-8 gap-5">
+                    <div className="flex flex-col items-center px-40 py-20 bg-background-main  relative">
+                        <Image src={AsteriskSmall} alt="" className="w-30 h-auto absolute right-1/4 top-1/30"/>
+                        <Image src={Ricky} alt="" className="w-50 h-auto absolute right-1/15 bottom-[10%] -rotate-20" />
+                        <Image src={Teewee} alt="" className="w-50 h-50 absolute left-1/20 bottom-1/3 rotate-10" />
                         <Card className="w-full max-w-md ">
                             <CardHeader>
-                                <CardTitle className="flex text-5xl font-bold tracking-tight mx-auto">Регистрация</CardTitle>
+                                <h1 className="flex text-5xl font-medium font-[Tektur] mx-auto">Регистрация</h1>
                             </CardHeader>
                             <CardContent>
                                 <form>

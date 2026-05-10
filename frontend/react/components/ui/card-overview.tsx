@@ -95,7 +95,7 @@ export function TaskDetailCard({
                                 {category}
                             </Badge>
                         </div>
-                            <h1 className="text-3xl font-bold">
+                            <h1 className="text-3xl font-[tektur] font-medium ">
                                 {title}
                             </h1>
                             {/* Технологии (бейджи) */}
@@ -120,11 +120,11 @@ export function TaskDetailCard({
                             {description}
                         </p>
                         <div className="flex flex-row items-end text-primary-purple ">
-                            <h1 className="text-primary-purple text-3xl font-bold">
+                            <h1 className="text-primary-purple text-3xl font-[tektur] font-medium ">
                                 {currentBugs}
                             </h1>
                             <Bug className="size-7 pb-1" />
-                            <p className="text-muted-foreground font-bold pb-1">/10</p>
+                            <p className="text-muted-foreground font-[tektur] font-medium  pb-1">/10</p>
                         </div>
                     </div>
 

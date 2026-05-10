@@ -2,6 +2,8 @@ import {Header} from "@/react/components/ui/header";
 import {Footer} from "@/react/components/ui/footer";
 import {TaskDetailCard} from "@/react/components/ui/card-overview";
 import {Card, CardContent, CardHeader, CardTitle} from "@/react/components/ui/card";
+import Image from "next/image";
+import AsteriskSmall from "@/public/AsteriskSmall.svg";
 
 
 export default function Overview() {
@@ -9,10 +11,11 @@ export default function Overview() {
         <div className="flex min-h-screen flex-col bg-background-main dark:bg-black">
             <Header />
             <main className="flex-1">
-                <div className="flex flex-col ml-8 px-40 bg-background-main pt-12 pb-30 gap-8">
-                    <h1 className="text-5xl font-bold tracking-tight  mb-10">
-                        Обзор задачи
+                <div className="flex flex-col ml-8 px-40 bg-background-main pt-12 pb-30 gap-8 relative">
+                    <h1 className="text-5xl font-[tektur] font-medium text-black mb-8">
+                        <span className="underline decoration-wavy decoration-primary-purple underline-offset-10"> Обзор</span> задачи
                     </h1>
+                    <Image src={AsteriskSmall} alt="" className="w-25 h-25 absolute left-[29%] top-[1%] " />
                     <TaskDetailCard
                         imageUrl="https://edu-sigma.ru/wp-content/uploads/2023/05/%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.jpg"
                         title="Тест скорости печати"
@@ -26,7 +29,7 @@ export default function Overview() {
                     <Card className="w-full">
                         <CardHeader>
                             <CardTitle>
-                                <h1 className="text-3xl ">
+                                <h1 className="text-3xl font-[tektur] font-medium ">
                                     Техническое задание
                                 </h1>
                             </CardTitle>

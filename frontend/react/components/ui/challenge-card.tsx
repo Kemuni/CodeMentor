@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/react/components/ui/card";
+import { Card, CardDescription, CardFooter, CardHeader } from "@/react/components/ui/card";
 import { Badge } from "@/react/components/ui/badge";
 import { Bug, MoveRight } from "lucide-react";
 
@@ -85,7 +85,7 @@ export function TaskCard({
             />
 
             <CardHeader>
-                <CardTitle>{title}</CardTitle>
+                <h1 className=" text-xl font-[tektur] font-medium"> {title}</h1>
 
                 {/* Технологии (бейджи) */}
                 <div className="flex flex-row flex-wrap gap-1">
@@ -105,11 +105,11 @@ export function TaskCard({
 
             <CardFooter className="flex flex-row justify-between w-full mt-auto">
                 <div className="flex flex-row items-end">
-                    <h1 className="text-primary-purple text-3xl font-bold">
+                    <h1 className="text-primary-purple text-3xl font-[tektur] font-medium">
                         {currentBugs}
                     </h1>
                     <Bug className="size-7 pb-1 text-primary-purple" />
-                    <p className="font-bold pb-1">/10</p>
+                    <p className="font-[tektur] font-medium text-muted-foreground pb-1">/10</p>
                 </div>
 
                 <MoveRight className="text-white rounded-full size-8 px-1 bg-black cursor-pointer hover:bg-black/80 transition-colors" />

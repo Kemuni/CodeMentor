@@ -6,6 +6,8 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbS
 import Link from "next/link";
 import { Card, CardContent } from "@/react/components/ui/card"
 import {Button} from "@/react/components/ui/button";
+import Image from "next/image";
+import AsteriskSmall from "@/public/AsteriskSmall.svg";
 
 
 export default function PublicationReview() {
@@ -14,10 +16,12 @@ export default function PublicationReview() {
         <div className="flex min-h-screen flex-col bg-background-main ">
             <Header />
             <main className="flex-1">
-                <div className="flex flex-col ml-8 px-40 bg-background-main pt-12 pb-30 gap-3">
-                    <h1 className="text-5xl font-bold tracking-tight mb-8">
-                        Публикация решения
+                <div className="flex flex-col ml-8 px-40 bg-background-main pt-12 pb-30 gap-3 relative">
+                    <h1 className="text-5xl font-[tektur] font-medium text-black mb-8">
+                        <span className="underline decoration-wavy decoration-primary-purple underline-offset-10"> Публикация</span> решения
                     </h1>
+                    <Image src={AsteriskSmall} alt="" className="w-25 h-25 absolute left-[39%] top-[1%] " />
+
                     <div className="flex flex-col ml-15 gap-3">
                         <Breadcrumb>
                             <BreadcrumbList>
@@ -43,7 +47,7 @@ export default function PublicationReview() {
                         <Card className="w-full">
                             <CardContent>
                                 <div className="flex flex-col items-center gap-3 my-20 ">
-                                    <h1 className="text-2xl tracking-tight ">
+                                    <h1 className="text-2xl tracking-tight font-[tektur] font-medium">
                                         Решение задачи <span className="underline text-primary-purple">«Трекер настроения»</span> опубликовано!
                                     </h1>
                                     <p className="text-xs text-muted-foreground">Благодарим вас за использование нашего сервиса. Ваше мнение очень важно для нас!</p>

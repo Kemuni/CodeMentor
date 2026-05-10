@@ -2,7 +2,7 @@
 
 import { Header } from "@/react/components/ui/header";
 import { Footer } from "@/react/components/ui/footer";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/react/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "@/react/components/ui/card";
 import { Avatar, AvatarImage } from "@/react/components/ui/avatar";
 import { Button } from "@/react/components/ui/button";
 import { Field, FieldLabel } from "@/react/components/ui/field"
@@ -10,6 +10,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/react/components/ui/
 import {Contact, LogOut, Pencil, SquarePen} from "lucide-react";
 import {PasswordInput} from "@/react/components/ui/password-input";
 import {TaskCard} from "@/react/components/ui/challenge-card";
+import AsteriskSmall from "@/public/AsteriskSmall.svg";
+import Image from "next/image";
 
 
 export default function ProfileMain() {
@@ -17,10 +19,11 @@ export default function ProfileMain() {
         <div className="flex min-h-screen flex-col bg-background-main  dark:bg-black">
             <Header />
             <main className="flex-1">
-                <div className="px-40 py-12 ml-8">
-                    <h1 className="text-5xl font-bold tracking-tight dark:text-white mb-10">
-                        Личный кабинет
+                <div className="px-40 py-12 ml-8 relative">
+                    <h1 className="text-5xl font-[tektur] font-medium text-black mb-10">
+                        <span className="underline decoration-wavy decoration-primary-purple underline-offset-10"> Личный</span> кабинет
                     </h1>
+                    <Image src={AsteriskSmall} alt="" className="w-25 h-25 absolute left-[32%] top-[1%] " />
                     <div className="grid grid-cols-[320px_1fr] gap-10">
                         <div className="flex flex-col gap-6">
                             <Card className="w-80">
@@ -55,9 +58,9 @@ export default function ProfileMain() {
                             </Card>
                             <Card className="w-80">
                                 <CardHeader>
-                                    <CardTitle className="text-3xl font-semibold">
+                                    <h1 className="text-3xl font-[Tektur] font-medium ">
                                         Статистика
-                                    </CardTitle>
+                                    </h1>
                                 </CardHeader>
                                 <CardContent>
                                     <div className="flex flex-col gap-3">
@@ -89,7 +92,7 @@ export default function ProfileMain() {
                                     <Card>
                                         <CardHeader>
                                             <div className="flex justify-between">
-                                                <CardTitle className="text-2xl">Обо мне</CardTitle>
+                                                <h1 className="text-2xl font-[Tektur] font-medium ">Обо мне</h1>
                                                 <Button variant="outline">
                                                     <SquarePen  />
                                                 </Button>
@@ -102,7 +105,7 @@ export default function ProfileMain() {
                                     <Card>
                                         <CardHeader>
                                             <div className="flex justify-between">
-                                                <CardTitle className="text-2xl">Мои умения</CardTitle>
+                                                <h1 className="text-2xl font-[Tektur] font-medium ">Мои умения</h1>
                                                 <Button variant="outline">
                                                     <SquarePen  />
                                                 </Button>
@@ -115,7 +118,7 @@ export default function ProfileMain() {
                                     <div className=" col-span-2">
                                         <Card>
                                             <CardHeader>
-                                                <CardTitle className="text-2xl">Мои решения</CardTitle>
+                                                <h1 className="text-2xl font-[Tektur] font-medium ">Мои решения</h1>
                                             </CardHeader>
                                             <CardContent className="flex items-center justify-center text-center text-base text-muted-foreground">
                                                 <div className="flex flex-col gap-3 items-center">
@@ -133,7 +136,7 @@ export default function ProfileMain() {
                                     <div className="flex flex-col gap-5">
                                         <Card>
                                             <CardHeader>
-                                                <CardTitle className="text-2xl">Сменить пароль</CardTitle>
+                                                <h1 className="text-2xl font-[Tektur] font-medium ">Сменить пароль</h1>
                                             </CardHeader>
                                             <CardContent>
                                                 <div className="flex flex-col gap-3 items-start">
@@ -157,7 +160,7 @@ export default function ProfileMain() {
                                         </Card>
                                         <Card>
                                             <CardHeader>
-                                                <CardTitle className="text-2xl">Отвязать ключ GitHub</CardTitle>
+                                                <h1 className="text-2xl font-[Tektur] font-medium">Отвязать ключ GitHub</h1>
                                             </CardHeader>
                                             <CardContent className="text-base flex flex-col gap-3">
                                                 Данная кнопка отвяжет авторизационный ключ GitHub от CodeMentor. При следующем входе в CodeMentor вам придется снова авторизовываться через GitHub.
@@ -168,7 +171,7 @@ export default function ProfileMain() {
                                         </Card>
                                         <Card className="bg-red-500/10 text-red-500">
                                             <CardHeader>
-                                                <CardTitle className="text-2xl">Удалить аккаунт</CardTitle>
+                                                <h1 className="text-2xl font-[Tektur] font-medium">Удалить аккаунт</h1>
                                             </CardHeader>
                                             <CardContent className="text-base flex flex-col gap-3 ">
                                                 Нажав кнопку ниже вы НАВСЕГДА удалите свой аккаунт. Также вы удалите ВСЕ свои решения и всю информацию о себе.
@@ -185,7 +188,7 @@ export default function ProfileMain() {
                                     <div className="flex flex-col gap-5">
                                         <Card>
                                             <CardHeader>
-                                                <CardTitle className="text-2xl">В процессе</CardTitle>
+                                                <h1 className="text-2xl font-[Tektur] font-medium">В процессе</h1>
                                             </CardHeader>
                                             <CardContent >
                                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -212,7 +215,7 @@ export default function ProfileMain() {
                                         </Card>
                                         <Card>
                                             <CardHeader>
-                                                <CardTitle className="text-2xl">Завершенные</CardTitle>
+                                                <h1 className="text-2xl font-[Tektur] font-medium">Завершенные</h1>
                                             </CardHeader>
                                             <CardContent className="text-base flex flex-col gap-3 text-muted-foreground items-center py-15">
                                                 Завершите задачу и прикрепите решение. Оно отобразится тут
