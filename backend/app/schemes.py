@@ -1,4 +1,5 @@
 from typing import Generic, TypeVar, Optional
+from datetime import datetime
 
 from pydantic import BaseModel, Field
 
@@ -35,3 +36,27 @@ class TagBody(BaseModel):
 
 class ReadChallenge(ChallengeBody):
     tags: list[Tag]
+
+
+class ReadUser(BaseModel):
+    id: int
+    github_id: int
+    username: str
+    email: Optional[str] = None
+    avatar_url: Optional[str] = None
+    created_at: datetime
+
+
+class ChallengeSolutionBody(BaseModel):
+    general_description: str
+    trouble_description: str
+    total_rate: int = Field(ge=1, le=10)
+    total_difficulty: int = Field(ge=1, le=10)
+
+
+class ReadChallengeSolution(ChallengeSolutionBody):
+    id: int
+    challenge_id: int
+    user_id: int
+    created_at: datetime
+    user: ReadUser

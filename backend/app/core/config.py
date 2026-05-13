@@ -18,7 +18,13 @@ class Settings(BaseSettings):
     ENVIRONMENT: Literal["local", "staging", "production"] = "local"
 
     # -- Auth & Security --
+    SECRET_KEY: str
+    ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8  # 60 minutes * 24 hours * 8 days = 8 days
+
+    # -- GitHub OAuth --
+    GITHUB_CLIENT_ID: str
+    GITHUB_CLIENT_SECRET: str
 
     # -- DATABASE --
     POSTGRES_SERVER: str
