@@ -2,64 +2,51 @@
 
 import { Card, CardDescription, CardFooter, CardHeader } from "@/react/components/ui/card";
 import { Badge } from "@/react/components/ui/badge";
-import { Bug, MoveRight } from "lucide-react";
+import { Bug, MoveRight, PlayCircle, CheckCircle2 } from "lucide-react";
+import { Button } from "@/react/components/ui/button";
 
-// Типы для пропсов карточки
 interface TaskCardProps {
+    id?: number;
     title: string;
     description: string;
     imageUrl: string;
-    priceType: "free" | "subscription"; // Бесплатно или По подписке
+    priceType: "free" | "subscription";
     category: "Frontend" | "Fullstack" | "Backend";
     technologies: string[];
     currentBugs: number;
+    isInProgress?: boolean;
+    isLoggedIn?: boolean;
+    onStart?: (id: number) => void;
 }
 
 export function TaskCard({
-                             title,
-                             description,
-                             imageUrl,
-                             priceType,
-                             category,
-                             technologies,
-                             currentBugs,
-                         }: TaskCardProps) {
-    // Цвета для бейджа цены
+    id,
+    title,
+    description,
+    imageUrl,
+    priceType,
+    category,
+    technologies,
+    currentBugs,
+    isInProgress = false,
+    isLoggedIn = false,
+    onStart,
+}: TaskCardProps) {
     const priceColors = {
-        free: {
-            bg: "#A3E635",
-            text: "#3F6212",
-            label: "Бесплатно",
-        },
-        subscription: {
-            bg: "#FBBF24",
-            text: "#92400E",
-            label: "По подписке",
-        },
+        free: { bg: "#A3E635", text: "#3F6212", label: "Бесплатно" },
+        subscription: { bg: "#FBBF24", text: "#92400E", label: "По подписке" },
     };
-
-    // Цвета для бейджа категории
     const categoryColors = {
-        Frontend: {
-            bg: "#CCFBF1",
-            text: "#0F766E",
-        },
-        Fullstack: {
-            bg: "#FFEDD5",
-            text: "#EA580C",
-        },
-        Backend: {
-            bg: "#E0E7FF",
-            text: "#4338CA",
-        },
+        Frontend: { bg: "#CCFBF1", text: "#0F766E" },
+        Fullstack: { bg: "#FFEDD5", text: "#EA580C" },
+        Backend: { bg: "#E0E7FF", text: "#4338CA" },
     };
 
     const priceStyle = priceColors[priceType];
     const categoryStyle = categoryColors[category];
 
-    return (
-        <Card className="relative mx-auto w-full max-w-sm pt-0 overflow-hidden">
-            {/* Бейдж цены (слева сверху) */}
+    const cardInner = (
+        <Card className="relative mx-auto w-full max-w-sm pt-0 overflow-hidden h-full flex flex-col">
             <Badge
                 variant="secondary"
                 className="absolute z-40 left-4 top-4 px-3 py-3"
@@ -67,8 +54,6 @@ export function TaskCard({
             >
                 {priceStyle.label}
             </Badge>
-
-            {/* Бейдж категории (справа сверху) */}
             <Badge
                 variant="secondary"
                 className="absolute z-40 right-4 top-4 px-3 py-3"
@@ -76,18 +61,13 @@ export function TaskCard({
             >
                 {category}
             </Badge>
-
-            {/* Изображение */}
             <img
-                src={imageUrl}
+                src={`http://localhost:8000${imageUrl}`}
                 alt={title}
                 className="relative z-20 aspect-video w-full object-cover"
             />
-
-            <CardHeader>
-                <h1 className=" text-xl font-[tektur] font-medium"> {title}</h1>
-
-                {/* Технологии (бейджи) */}
+            <CardHeader className="flex-1">
+                <h1 className="text-xl font-[tektur] font-medium">{title}</h1>
                 <div className="flex flex-row flex-wrap gap-1">
                     {technologies.map((tech, index) => (
                         <Badge
@@ -99,21 +79,42 @@ export function TaskCard({
                         </Badge>
                     ))}
                 </div>
-
-                <CardDescription>{description}</CardDescription>
+                <CardDescription className="line-clamp-3">{description}</CardDescription>
             </CardHeader>
-
             <CardFooter className="flex flex-row justify-between w-full mt-auto">
                 <div className="flex flex-row items-end">
-                    <h1 className="text-primary-purple text-3xl font-[tektur] font-medium">
-                        {currentBugs}
-                    </h1>
+                    <h1 className="text-primary-purple text-3xl font-[tektur] font-medium">{currentBugs}</h1>
                     <Bug className="size-7 pb-1 text-primary-purple" />
                     <p className="font-[tektur] font-medium text-muted-foreground pb-1">/10</p>
                 </div>
-
-                <MoveRight className="text-white rounded-full size-8 px-1 bg-black cursor-pointer hover:bg-black/80 transition-colors" />
+                <div className="flex items-center gap-2">
+                    {isLoggedIn && id != null && (
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            className={isInProgress ? "text-green-600 hover:text-green-700" : "text-primary-purple hover:text-primary-purple"}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                if (!isInProgress) onStart?.(id);
+                            }}
+                            title={isInProgress ? "Уже в процессе" : "Начать задачу"}
+                        >
+                            {isInProgress ? (
+                                <CheckCircle2 className="size-6" />
+                            ) : (
+                                <PlayCircle className="size-6" />
+                            )}
+                        </Button>
+                    )}
+                    <MoveRight className="text-white rounded-full size-8 px-1 bg-black cursor-pointer hover:bg-black/80 transition-colors" />
+                </div>
             </CardFooter>
         </Card>
     );
+
+    if (id != null) {
+        return <a href={`/overview/${id}`} className="block">{cardInner}</a>;
+    }
+    return cardInner;
 }

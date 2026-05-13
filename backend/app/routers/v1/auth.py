@@ -19,6 +19,7 @@ _GITHUB_USER_URL = "https://api.github.com/user"
 def github_login():
     params = {
         "client_id": settings.GITHUB_CLIENT_ID,
+        "redirect_uri": "https://localhost:3000/github_callback",
         "scope": "read:user user:email",
     }
     query = "&".join(f"{k}={v}" for k, v in params.items())

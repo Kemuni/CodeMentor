@@ -11,6 +11,7 @@ interface CounterProps {
     max?: number;
     icon?: React.ReactNode;
     label?: string;
+    onChange?: (value: number) => void;
 }
 
 export function Counter({
@@ -18,18 +19,21 @@ export function Counter({
                             min = 0,
                             max = 10,
                             icon,
-                            label = "/10"
+                            label = "/10",
+                            onChange,
                         }: CounterProps) {
     const [value, setValue] = useState(initialValue);
 
     const increment = () => {
         const newValue = Math.min(value + 1, max);
         setValue(newValue);
+        onChange?.(newValue);
     };
 
     const decrement = () => {
         const newValue = Math.max(value - 1, min);
         setValue(newValue);
+        onChange?.(newValue);
     };
 
     return (

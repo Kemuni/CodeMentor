@@ -27,7 +27,8 @@ class ChallengeBody(BaseModel):
     type: ChallengeType
     difficulty: int = Field(gt=0, le=10)
     description: str
-    image_url: str
+    task_description: str = ""
+    image_url: str = ""
     tags: list[str]
 
 class TagBody(BaseModel):
@@ -35,6 +36,7 @@ class TagBody(BaseModel):
 
 
 class ReadChallenge(ChallengeBody):
+    id: int | None = None
     tags: list[Tag]
 
 
@@ -50,6 +52,7 @@ class ReadUser(BaseModel):
 class ChallengeSolutionBody(BaseModel):
     general_description: str
     trouble_description: str
+    repo_url: Optional[str] = None
     total_rate: int = Field(ge=1, le=10)
     total_difficulty: int = Field(ge=1, le=10)
 
@@ -60,3 +63,12 @@ class ReadChallengeSolution(ChallengeSolutionBody):
     user_id: int
     created_at: datetime
     user: ReadUser
+    challenge_name: Optional[str] = None
+
+
+class ReadUserChallengeProgress(BaseModel):
+    id: int
+    user_id: int
+    challenge_id: int
+    started_at: datetime
+    challenge: ReadChallenge

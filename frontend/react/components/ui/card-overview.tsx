@@ -63,9 +63,9 @@ export function TaskDetailCard({
     return (
         <div className="grid grid-cols-2 gap-10">
             {/* Левая колонка - изображение */}
-            <div className="">
+            <div className="rounded-xl overflow-hidden">
                 <img
-                    src={imageUrl}
+                    src={`http://localhost:8000${imageUrl}`}
                     alt={imageAlt}
                     className="relative aspect-video h-full w-full object-cover "
                 />
@@ -131,21 +131,12 @@ export function TaskDetailCard({
                 </CardContent>
 
                 <CardFooter className="flex flex-col gap-4 items-start">
-                    <Button variant="outline"
-                        className="max-w-min px-6 bg-primary-purple border border-primary-purple text-white hover:bg-white hover:text-primary-purple cursor-pointer"
-                    >
-                        Начать выполнение
-                    </Button>
 
                     <div className="justify-between w-full items-end">
                         <div className="flex flex-row gap-6 text-sm text-muted-foreground w-full justify-end">
                             <div className="flex items-center gap-1">
                                 <Book className="h-4 w-4" />
                                 <span>{solutionsCount} решений</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                                <Eye className="h-4 w-4" />
-                                <span>{viewsCount} просмотров</span>
                             </div>
                         </div>
                     </div>

@@ -12,6 +12,7 @@ dependencies = [
     "psycopg-binary>=3.3.3",
     "pydantic-settings>=2.13.1",
     "python-jose[cryptography]>=3.3.0",
+    "python-multipart>=0.0.28",
     "sqlmodel>=0.0.38",
     "uvicorn>=0.44.0",
 ]

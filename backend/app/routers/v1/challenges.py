@@ -1,6 +1,8 @@
 from typing import Annotated
+import os
+import uuid
 
-from fastapi import APIRouter, status, Query
+from fastapi import APIRouter, status, Query, UploadFile, File
 from fastapi.responses import JSONResponse
 from fastapi import Depends
 from sqlalchemy.orm import selectinload
@@ -116,3 +118,72 @@ def add_tags(challenge_id: int, tags: list[int], db = Depends(get_db)):
     db.refresh(challenge_db)
 
     return SuccessResponse(data={**challenge_db.model_dump(mode='json'), "tags": challenge_db.tags})
+
+
+_MEDIA_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "..", "media", "challenges")
+
+ALLOWED_IMAGE_TYPES = {"image/jpeg", "image/png", "image/webp", "image/gif"}
+MAX_IMAGE_SIZE = 10 * 1024 * 1024  # 10 MB
+
+
+@router.post('/{challenge_id}/image', response_model=APIResponse[Challenge])
+async def upload_challenge_image(challenge_id: int, file: UploadFile = File(...), db=Depends(get_db)):
+    challenge_db = db.get(Challenge, challenge_id)
+    if not challenge_db:
+        return ErrorResponse(status_code=status.HTTP_404_NOT_FOUND, message='Challenge not found', code='CHALLENGE_NOT_FOUND')
+
+    if file.content_type not in ALLOWED_IMAGE_TYPES:
+        return ErrorResponse(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            message=f'Unsupported file type: {file.content_type}. Allowed: jpeg, png, webp, gif',
+            code='INVALID_FILE_TYPE',
+        )
+
+    content = await file.read()
+    if len(content) > MAX_IMAGE_SIZE:
+        return ErrorResponse(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            message='File too large. Maximum size is 10 MB.',
+            code='FILE_TOO_LARGE',
+        )
+
+    ext = os.path.splitext(file.filename or "image")[1] or ".jpg"
+    filename = f"{uuid.uuid4().hex}{ext}"
+    challenge_dir = os.path.join(_MEDIA_DIR, str(challenge_id))
+    os.makedirs(challenge_dir, exist_ok=True)
+
+    file_path = os.path.join(challenge_dir, filename)
+    with open(file_path, "wb") as f:
+        f.write(content)
+
+    challenge_db.image_url = f"/media/challenges/{challenge_id}/{filename}"
+    db.add(challenge_db)
+    db.commit()
+    db.refresh(challenge_db)
+
+    return SuccessResponse(data=challenge_db)
+
+
+@router.delete('/{challenge_id}/image', response_model=APIResponse[Challenge])
+def delete_challenge_image(challenge_id: int, db=Depends(get_db)):
+    challenge_db = db.get(Challenge, challenge_id)
+    if not challenge_db:
+        return ErrorResponse(status_code=status.HTTP_404_NOT_FOUND, message='Challenge not found', code='CHALLENGE_NOT_FOUND')
+
+    if challenge_db.image_url:
+        # image_url is like /media/challenges/{id}/filename
+        # _MEDIA_DIR is backend/media/challenges
+        # Strip the /media/challenges/ prefix to get relative path within _MEDIA_DIR
+        prefix = "/media/challenges/"
+        if challenge_db.image_url.startswith(prefix):
+            rel = challenge_db.image_url[len(prefix):]  # "{id}/filename"
+            abs_path = os.path.normpath(os.path.join(_MEDIA_DIR, rel))
+            if os.path.isfile(abs_path):
+                os.remove(abs_path)
+
+    challenge_db.image_url = ""
+    db.add(challenge_db)
+    db.commit()
+    db.refresh(challenge_db)
+
+    return SuccessResponse(data=challenge_db)

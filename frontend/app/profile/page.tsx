@@ -1,20 +1,51 @@
 'use client';
 
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Header } from "@/react/components/ui/header";
 import { Footer } from "@/react/components/ui/footer";
 import { Card, CardContent, CardFooter, CardHeader } from "@/react/components/ui/card";
 import { Avatar, AvatarImage } from "@/react/components/ui/avatar";
 import { Button } from "@/react/components/ui/button";
-import { Field, FieldLabel } from "@/react/components/ui/field"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/react/components/ui/tabs";
-import {Contact, LogOut, Pencil, SquarePen} from "lucide-react";
-import {PasswordInput} from "@/react/components/ui/password-input";
-import {TaskCard} from "@/react/components/ui/challenge-card";
+import { Contact, LogOut, Pencil, SquarePen } from "lucide-react";
+import { Field, FieldLabel } from "@/react/components/ui/field";
+import { PasswordInput } from "@/react/components/ui/password-input";
+import { TaskCard } from "@/react/components/ui/challenge-card";
 import AsteriskSmall from "@/public/AsteriskSmall.svg";
 import Image from "next/image";
-
+import { useAuth } from "@/react/context/auth-context";
+import { progressApi, solutionsApi, type ReadUserChallengeProgress, type ReadChallengeSolution } from "@/lib/api";
 
 export default function ProfileMain() {
+    const { user, isLoading: authLoading, logout } = useAuth();
+    const router = useRouter();
+    const [inProgress, setInProgress] = useState<ReadUserChallengeProgress[]>([]);
+    const [mySolutions, setMySolutions] = useState<ReadChallengeSolution[]>([]);
+
+    useEffect(() => {
+        if (!authLoading && !user) {
+            router.replace("/login");
+        }
+    }, [authLoading, user, router]);
+
+    useEffect(() => {
+        if (!user) return;
+        progressApi.getMyInProgress().then((res) => {
+            if (res.success && res.data) setInProgress(res.data);
+        });
+        solutionsApi.mySolutions().then((res) => {
+            if (res.success && res.data) setMySolutions(res.data);
+        });
+    }, [user]);
+
+    function handleLogout() {
+        logout();
+        router.push("/");
+    }
+
+    if (authLoading || !user) return null;
+
     return (
         <div className="flex min-h-screen flex-col bg-background-main  dark:bg-black">
             <Header />
@@ -34,21 +65,22 @@ export default function ProfileMain() {
                                                 <Pencil />
                                             </div>
                                             <AvatarImage
-                                                src="https://github.com/shadcn.png"
-                                                alt="@shadcn"
+                                                src={user.avatar_url ?? "https://github.com/shadcn.png"}
+                                                alt={user.username}
                                                 className="grayscale z-10"
                                             />
                                         </Avatar>
-                                        <h3 className="mt-4 text-xl text-primary-purple font-bold">luminous453</h3>
+                                        <h3 className="mt-4 text-xl text-primary-purple font-bold">{user.username}</h3>
                                         <div className="flex items-center justify-center gap-1 text-sm text-black dark:text-white">
                                             <Contact className="w-4 h-4" />
-                                            <p>limonius</p>
+                                            <p>{user.email ?? user.username}</p>
                                         </div>
                                     </div>
                                 </CardContent>
                                 <CardFooter>
                                     <Button
                                         variant="outline"
+                                        onClick={handleLogout}
                                         className="w-full gap-2 border font-bold border-red-500 text-red-500 hover:text-white hover:bg-red-500 cursor-pointer"
                                     >
                                         <LogOut className="h-4 w-4" />
@@ -66,11 +98,11 @@ export default function ProfileMain() {
                                     <div className="flex flex-col gap-3">
                                         <div className="flex flex-row justify-between">
                                             <p className="text-lg">Решено:</p>
-                                            <p className="text-lg text-primary-purple font-bold">2 задачи</p>
+                                            <p className="text-lg text-primary-purple font-bold">{mySolutions.length} задач(и)</p>
                                         </div>
                                         <div className="flex flex-row justify-between">
                                             <p className="text-lg">В процессе:</p>
-                                            <p className="text-lg text-primary-purple font-bold">3 задачи</p>
+                                            <p className="text-lg text-primary-purple font-bold">{inProgress.length} задач(и)</p>
                                         </div>
                                     </div>
                                 </CardContent>
@@ -120,14 +152,29 @@ export default function ProfileMain() {
                                             <CardHeader>
                                                 <h1 className="text-2xl font-[Tektur] font-medium ">Мои решения</h1>
                                             </CardHeader>
-                                            <CardContent className="flex items-center justify-center text-center text-base text-muted-foreground">
-                                                <div className="flex flex-col gap-3 items-center">
-                                                    Тут будут отображаться ваши решения задач...
-                                                    <a href="/catalog">
-                                                        <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white max-w-min text-base font-bold px-6"> Перейти к задачам </Button>
-                                                    </a>
-                                                </div>
-
+                                            <CardContent>
+                                                {mySolutions.length === 0 ? (
+                                                    <div className="flex flex-col gap-3 items-center text-center text-base text-muted-foreground">
+                                                        Тут будут отображаться ваши решения задач...
+                                                        <a href="/catalog">
+                                                            <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white max-w-min text-base font-bold px-6"> Перейти к задачам </Button>
+                                                        </a>
+                                                    </div>
+                                                ) : (
+                                                    <div className="flex flex-col gap-3">
+                                                        {mySolutions.map((s) => (
+                                                            <div key={s.id} className="border rounded-xl p-4 flex flex-col gap-1">
+                                                                <div className="flex items-center justify-between">
+                                                                    <a href={`/overview/${s.challenge_id}`} className="font-medium text-primary-purple hover:underline">
+                                                                        {s.challenge_name ?? `Задача #${s.challenge_id}`}
+                                                                    </a>
+                                                                    <span className="text-xs text-muted-foreground">{new Date(s.created_at).toLocaleDateString("ru-RU")}</span>
+                                                                </div>
+                                                                <p className="text-sm">{s.general_description}</p>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
                                             </CardContent>
                                         </Card>
                                     </div>
@@ -192,24 +239,25 @@ export default function ProfileMain() {
                                             </CardHeader>
                                             <CardContent >
                                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                                    <TaskCard
-                                                    title="Тест скорости печати"
-                                                    description="Реализуйте сайт для оценки скорости печатания пользователя, рассчитайте количество слов в минуту и точность, а также"
-                                                    imageUrl="https://edu-sigma.ru/wp-content/uploads/2023/05/%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.jpg"
-                                                    priceType="free"
-                                                    category="Frontend"
-                                                    technologies={["React", "JS/TS"]}
-                                                    currentBugs={2}
-                                                    />
-                                                    <TaskCard
-                                                        title="Трекер настроения"
-                                                        description="Создайте многостраничный сайт для трекинга настроения пользователя с хранением состояния"
-                                                        imageUrl="https://i.etsystatic.com/30134249/r/il/4277dd/3161817690/il_fullxfull.3161817690_j0un.jpg"
-                                                        priceType="subscription"
-                                                        category="Fullstack"
-                                                        technologies={["React", "FastAPI", "JS/TS", "Python", "ML"]}
-                                                        currentBugs={7}
-                                                    />
+                                                    {inProgress.length === 0 ? (
+                                                        <p className="text-muted-foreground col-span-3">Нет задач в процессе.</p>
+                                                    ) : inProgress.map((record) => {
+                                                        const c = record.challenge;
+                                                        return (
+                                                            <TaskCard
+                                                                key={c.id}
+                                                                id={c.id ?? undefined}
+                                                                title={c.name}
+                                                                description={c.description}
+                                                                imageUrl={c.image_url}
+                                                                priceType={c.is_free ? "free" : "subscription"}
+                                                                category={c.type as "Frontend" | "Backend" | "Fullstack"}
+                                                                technologies={c.tags.map((t) => t.name)}
+                                                                currentBugs={c.difficulty}
+                                                                isInProgress
+                                                            />
+                                                        );
+                                                    })}
                                                 </div>
                                             </CardContent>
                                         </Card>
@@ -217,11 +265,39 @@ export default function ProfileMain() {
                                             <CardHeader>
                                                 <h1 className="text-2xl font-[Tektur] font-medium">Завершенные</h1>
                                             </CardHeader>
-                                            <CardContent className="text-base flex flex-col gap-3 text-muted-foreground items-center py-15">
-                                                Завершите задачу и прикрепите решение. Оно отобразится тут
-                                                <a href="/publication">
-                                                    <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white max-w-min text-base font-bold px-6"> Добавить решение </Button>
-                                                </a>
+                                            <CardContent>
+                                                {mySolutions.length === 0 ? (
+                                                    <div className="text-base flex flex-col gap-3 text-muted-foreground items-center py-10 text-center">
+                                                        Завершите задачу и прикрепите решение. Оно отобразится тут
+                                                        <a href="/publication">
+                                                            <Button className="bg-primary-purple border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white max-w-min text-base font-bold px-6"> Добавить решение </Button>
+                                                        </a>
+                                                    </div>
+                                                ) : (
+                                                    <div className="flex flex-col gap-3">
+                                                        {mySolutions.map((s) => (
+                                                            <div key={s.id} className="border rounded-xl p-4 flex flex-col gap-2">
+                                                                <div className="flex items-center justify-between">
+                                                                    <a href={`/overview/${s.challenge_id}`} className="font-semibold text-primary-purple hover:underline">
+                                                                        {s.challenge_name ?? `Задача #${s.challenge_id}`}
+                                                                    </a>
+                                                                    <span className="text-xs text-muted-foreground">{new Date(s.created_at).toLocaleDateString("ru-RU")}</span>
+                                                                </div>
+                                                                <p className="text-sm">{s.general_description}</p>
+                                                                {s.trouble_description && (
+                                                                    <p className="text-sm text-muted-foreground"><span className="font-medium">Трудности:</span> {s.trouble_description}</p>
+                                                                )}
+                                                                {s.repo_url && (
+                                                                    <a href={s.repo_url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary-purple underline">Репозиторий</a>
+                                                                )}
+                                                                <div className="flex gap-4 text-sm text-muted-foreground">
+                                                                    <span>Оценка: <strong className="text-black">{s.total_rate}/10</strong></span>
+                                                                    <span>Сложность: <strong className="text-black">{s.total_difficulty}/10</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
                                             </CardContent>
                                         </Card>
                                     </div>

@@ -1,13 +1,17 @@
+import os
 from contextlib import asynccontextmanager
 
 import uvicorn
 from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
+from fastapi.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 from app.errors.handlers import general_exception_handler, pydantic_validation_exception_handler
 from app.routers import routers_list
+
+_MEDIA_DIR = os.path.join(os.path.dirname(__file__), "..", "media")
 
 
 @asynccontextmanager
@@ -37,6 +41,10 @@ def init_app() -> FastAPI:
     # Register routers
     for router in routers_list:
         application.include_router(router)
+
+    # Serve uploaded media files
+    os.makedirs(_MEDIA_DIR, exist_ok=True)
+    application.mount("/media", StaticFiles(directory=_MEDIA_DIR), name="media")
 
     return application
 

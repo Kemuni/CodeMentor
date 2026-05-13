@@ -28,12 +28,14 @@ class Challenge(SQLModel, table=True):
     type: str
     difficulty: int = Field(gt=0, le=10)
     description: str
-    image_url: str
+    task_description: str = Field(default="")
+    image_url: str = Field(default="")
     created_at: datetime = Field(default=datetime.utcnow(), nullable=False)
     last_edited: datetime = Field(default_factory=datetime.utcnow, nullable=False, sa_column_kwargs={'onupdate': datetime.utcnow})
 
     tags: list["Tag"] = Relationship(back_populates="challenges", link_model=ChallengeTagsLink)
     solutions: list["ChallengeSolution"] = Relationship(back_populates="challenge")
+    in_progress: list["UserChallengeProgress"] = Relationship(back_populates="challenge")
 
 
 class User(SQLModel, table=True):
@@ -45,6 +47,7 @@ class User(SQLModel, table=True):
     created_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
 
     solutions: list["ChallengeSolution"] = Relationship(back_populates="user")
+    in_progress: list["UserChallengeProgress"] = Relationship(back_populates="user")
 
 
 class ChallengeSolution(SQLModel, table=True):
@@ -53,11 +56,24 @@ class ChallengeSolution(SQLModel, table=True):
     user_id: int = Field(foreign_key="user.id")
     general_description: str
     trouble_description: str
+    repo_url: str | None = Field(default=None)
     total_rate: int = Field(ge=1, le=10)
     total_difficulty: int = Field(ge=1, le=10)
     created_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
 
     challenge: Challenge = Relationship(back_populates="solutions")
     user: User = Relationship(back_populates="solutions")
+
+
+class UserChallengeProgress(SQLModel, table=True):
+    __tablename__ = "user_challenge_progress"
+
+    id: int | None = Field(default=None, primary_key=True)
+    user_id: int = Field(foreign_key="user.id", index=True)
+    challenge_id: int = Field(foreign_key="challenge.id", index=True)
+    started_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
+
+    user: User = Relationship(back_populates="in_progress")
+    challenge: Challenge = Relationship(back_populates="in_progress")
 
 

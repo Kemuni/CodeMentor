@@ -84,7 +84,7 @@ export function TaskCardPublication({
             </Badge>
 
             <img
-                src={imageUrl}
+                src={`http://localhost:8000${imageUrl}`}
                 alt={title}
                 className="relative z-20 aspect-video w-full object-cover"
             />
@@ -104,7 +104,7 @@ export function TaskCardPublication({
                     ))}
                 </div>
 
-                <CardDescription>{description}</CardDescription>
+                <CardDescription className="line-clamp-3">{description}</CardDescription>
             </CardHeader>
 
             <CardFooter className="flex flex-row justify-between w-full mt-auto">

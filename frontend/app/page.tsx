@@ -78,9 +78,11 @@ export default function Home() {
                     Каталог задач
                   </Button>
                 </a>
-                <Button className="bg-primary-purple px-8 border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white">
-                    Подключить GitHub
-                </Button>
+                <a href="/login">
+                  <Button className="bg-primary-purple px-8 border border-primary-purple hover:text-primary-purple hover:cursor-pointer hover:bg-white">
+                      Подключить GitHub
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
