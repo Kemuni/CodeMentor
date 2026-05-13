@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 
 from app.utils.response import SuccessResponse
 
-router = APIRouter(prefix='/healthcheck', tags=['healthcheck'])
+router = APIRouter(prefix='/v1/healthcheck', tags=['healthcheck'])
 
 
 @router.get(

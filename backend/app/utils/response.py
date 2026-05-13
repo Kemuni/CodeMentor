@@ -3,7 +3,7 @@ from typing import Optional, Any
 from fastapi import status
 from fastapi.responses import JSONResponse
 
-from app.schemas import APIResponse, ErrorDetail
+from app.schemes import APIResponse, ErrorDetail
 
 
 class SuccessResponse(JSONResponse):
